@@ -1,10 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Login from '@/components/Login'
-// import Home from '@/view/Home'
 Vue.use(Router)
 
-export default new Router({
+ const router= new Router({
   routes: [
     {
       path: '/',
@@ -18,3 +16,12 @@ export default new Router({
     }
   ]
 })
+
+
+// router.beforeEach((to, from, next) => {
+//   console.log('to',to)
+//   console.log('from',from)
+//   console.log('next',next)
+// })
+
+export default router 
