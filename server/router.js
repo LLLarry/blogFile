@@ -3,7 +3,23 @@ const util= require('./utils/util.js')
 const express=require('express')
 const router=express.Router()
 const jwt= require('jsonwebtoken')
-
+/**
+ * 
+ * @param {String} num 
+ */
+function rederMath(num){ //生成随机数
+    const arr= ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    let token= ''
+    for(let i=0; i < num; i++){
+        var index= Math.floor(Math.random()*36)
+        let str= arr[index]
+        if(!(/\d/.test(arr[index]))){
+            str=  Math.random()>0.5 ? arr[index].toUpperCase() : arr[index]
+        }
+        token+= str
+    }
+    return token
+}
 router.get('/index',function(req,res){
     console.log(555)
     var obj = {
@@ -13,21 +29,21 @@ router.get('/index',function(req,res){
 
     res.json(obj)
 })
-router.get('/login',function(req,res){
-    connect('SELECT * FROM `user`')
-    .then((data)=>{
-       res.status(200).json({
-           message: 'ok',
-           data: data
-       })
-    })
-    .catch((err)=>{
-        res.status(200).json({
-            message: 'error',
-            err: err
-        })
-    })
-})
+// router.get('/login',function(req,res){
+//     connect('SELECT * FROM `user`')
+//     .then((data)=>{
+//        res.status(200).json({
+//            message: 'ok',
+//            data: data
+//        })
+//     })
+//     .catch((err)=>{
+//         res.status(200).json({
+//             message: 'error',
+//             err: err
+//         })
+//     })
+// })
 /** 
 router.get('/login/user',function(req,res){
     connect(`SELECT * FROM user WHERE name='${req.query.user}'`)
@@ -55,13 +71,13 @@ router.get('/login/user',function(req,res){
 })
 */
 
-router.get('/login/user',function(req,res){ //登录校验
+router.get('/login',function(req,res){ //登录校验
     async function handleLogin(sqlStr){
       try {
-          
         let id= util.parseData(await connect(sqlStr))[0].id
         let password= util.parseData(await connect(sqlStr))[0].password 
-        console.log(req.query.password ,password)
+        let userName= util.parseData(await connect(sqlStr))[0].name 
+        let classify= util.parseData(await connect(sqlStr))[0].classify 
         if(req.query.password == password){
             let token= jwt.sign( //将数据传给token
                 {id:id}, //将用户信息返回给客户端
@@ -73,6 +89,8 @@ router.get('/login/user',function(req,res){ //登录校验
             res.status(200).json({
                 message: '登录成功',
                 code: 200,
+                userName:userName,
+                classify: classify,
                 token: token //将token返回给客户端,客户端每次请求的时候都要携带者token
             })
         }else{
@@ -83,13 +101,13 @@ router.get('/login/user',function(req,res){ //登录校验
         }
       }catch(e) {
           console.log(e)
-        res.status(500).json({
+        res.status(200).json({
             message: '未注册，请进入注册页面',
             code: 202
         })
       }
     }
-    handleLogin(`SELECT * FROM user WHERE name='${req.query.user}'`)
+    handleLogin(`SELECT * FROM user WHERE name='${req.query.username}'`)
 })
 
 router.get('/index/page',(req,res)=> {

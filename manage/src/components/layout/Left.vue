@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="leftCom">
+        <div class="leftCom" :style="{width: slideWidth+'px'}">
              <div class="firstDiv" @click="handleSlide">
                 <span class="iconSpan"><i class="el-icon-s-home"></i></span>
                 <span>首页 </span>
@@ -50,6 +50,7 @@
                 </div>
             </el-collapse-transition>
         </div>
+        <div class="slideIcon" @click="handleSlideIcon"><i class="el-icon-s-fold"></i></div>
     </div>
 </template>
 
@@ -58,7 +59,10 @@ export default {
      data: () => ({
       show2: false,
       show3: false,
-      show4: false
+      show4: false,
+      slideWidth: 200, //测边栏宽度
+      isSlideMin: false, //是否滑到最小
+      isMoving:  false //是否正在滑到
     }),
     methods: {
         handleSlide(num){
@@ -68,6 +72,31 @@ export default {
                this['show'+num]= true
             }
             
+        },
+        handleSlideIcon(){
+            if(this.isMoving) return
+            this.isMoving= true
+            if(!this.isSlideMin){
+                let timer= null
+                timer= setInterval(()=>{
+                    this.slideWidth= this.slideWidth-3
+                    if(this.slideWidth <= 30){
+                        clearInterval(timer)
+                        this.isSlideMin= true //滑动到最小变为true
+                        this.isMoving= false
+                    }
+                },2)
+            }else{ //滑到最小了，开始变大
+                let timer= null
+                timer= setInterval(()=>{
+                    this.slideWidth= this.slideWidth+3
+                    if(this.slideWidth >= 200){
+                        clearInterval(timer)
+                        this.isSlideMin= false //滑动到最小变为true
+                         this.isMoving= false
+                    }
+                },2)
+            }     
         }
     }
 }
@@ -83,9 +112,21 @@ export default {
     left: 0;
     top: 60px;
     bottom: 0;
+    overflow: hidden;
+}
+.slideIcon {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    z-index: 100;
+}
+.slideIcon i {
+    font-size: 20px;
+    color: #fff;
 }
 .leftCom .firstDiv {
     height: 56px;
+    width: 200px;
     line-height: 56px;
     /* border-bottom: 1px solid #ccc; */
     padding-left: 10px;
@@ -112,6 +153,7 @@ export default {
 }
 .leftCom .transition-box {
     height: 50px;
+    width: 200px;
     line-height: 50px;
     padding-left: 40px;
   }

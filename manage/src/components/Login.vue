@@ -3,7 +3,7 @@
 	  	<transition name="form-fade" mode="in-out">
 	  		<section class="form_contianer">
 		  		<div class="manage_tip">
-		  			<span class="title">小爱xx管理系统</span>
+		  			<span class="title">个人博客后台管理系统</span>
 		  		</div>
 		    	<el-form :model="loginForm" :rules="rules" ref="loginForm" class="loginForm">
 					<el-form-item prop="username" class="login-item">
@@ -16,12 +16,7 @@
 					</el-form-item>
 					<el-form-item>
 				    	<el-button type="primary"  @click="submitForm('loginForm')" class="submit_btn">登陆</el-button>
-				  	</el-form-item>
-					<div class="tiparea">
-						<p class="wxtip">温馨提示：</p>
-						<p class="tip">用户名为：admin/editor<span class="tips">(可用于切换权限)</span></p>
-						<p class="tip">密码为：123456</p>
-					</div>
+				  	</el-form-item> 	
 					<div class="sanFangArea">
 						<p class="title">第三方账号登录</p>
 						<ul class="rflex">
@@ -77,14 +72,8 @@
             },
 		    submitForm(loginForm) {
 				this.$refs[loginForm].validate((valid) => { //当所有的表单校验通过后valid为true，否则为false
-					console.log(valid)
-					// if (valid) {
-					// 	let userinfo = this.loginForm;
-					// 	this.$store.dispatch('Login', userinfo).then(res => {
-					// 		this.$router.push({ path: '/' })
-					// 		this.$store.dispatch('initLeftMenu'); //设置左边菜单始终为展开状态
-					// 	})
-					// }
+					this.$store.dispatch('asyHandleLogin',{username:this.loginForm.username,password:this.loginForm.password})
+					
 				});
 			}
 		}
@@ -93,7 +82,12 @@
  
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+	.login_page .el-input {
+		background-color: transparent !important;
+	}
+	.el-input__inner {
+		background-color: transparent !important;
+	}
  .login_page{
 		position: absolute;
 		width: 100%;
@@ -102,7 +96,7 @@
 		background-size: 100% 100%;
 	}
 	.loginForm{
-		 background-color: #fff;
+		 background-color: rgba(255,255,255,.2);
 		 padding:20px;
 		 border-radius:3px;
 		 box-shadow: 5px 5px 10px #01144c;	

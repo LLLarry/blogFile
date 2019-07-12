@@ -3,18 +3,20 @@
         <Top />
         <Left />
         <main>
-            main
-        </main>
+            <Nal />
+         </main>
     </div>
 </template>
 
 <script>
 import Left from '../components/layout/Left'
 import Top from '../components/layout/Top'
+import Nal from '../components/Nav/Nav'
 export default {
     components: {
         Left,
-        Top
+        Top,
+        Nal
     }
 }
 </script>
@@ -27,6 +29,7 @@ export default {
     right: 0;
     bottom: 0;
     background-color:rgba(0,0,0,.1);
+    z-index: 1;
 }
 </style>
 
