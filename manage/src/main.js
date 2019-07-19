@@ -9,6 +9,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 import '../static/css/base.css'
 import { Message } from 'element-ui';
 Vue.use(ElementUI);
+// vue中使用echarts
+import echarts from 'echarts';
+Vue.prototype.$echarts = echarts
 
 Vue.config.productionTip = false
 // 每次刷新都会进入这个页面，所以在这里判断登录是否过期 

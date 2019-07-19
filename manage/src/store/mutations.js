@@ -1,7 +1,8 @@
 
 import {
     storeLoginInfo,
-    storeRoutes
+    storeRoutes,
+    handleNewArticle
 }from './mutationsType'
 
 export default {
@@ -21,6 +22,10 @@ export default {
     },
     storeLogoutTime(state,time){
         state.logoutTime= time
+        sessionStorage.setItem('state',JSON.stringify(state))
+    },
+    [handleNewArticle](state,obj){
+        state.newArticle= obj
         sessionStorage.setItem('state',JSON.stringify(state))
     }
 }

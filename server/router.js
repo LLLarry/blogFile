@@ -109,7 +109,52 @@ router.get('/login',function(req,res){ //登录校验
     }
     handleLogin(`SELECT * FROM user WHERE name='${req.query.username}'`)
 })
+router.get('/getNewArticle',(req,res)=>{ //获取最美文章请求
+    async function getNewArticle(){
+        try {
+            let newArticle= await connect('SELECT * from newarticle  where status = 1  ORDER BY create_time desc LIMIT 10')
+            newArticle.forEach((item,i)=>{
+                item.create_time= util.filterTime(item.create_time,'Y-M-D H:Mi:S')
+            })
+           res.status(200).json({
+            code: 200,
+            newArticle: newArticle   
+           })
+        }catch(e){
+            res.status(500).json({
+                code: 202
+            }) 
+        }
+    }
+    getNewArticle()
+})
+router.get('/upDataNewArticleStatus',(req,res)=>{ //更新newArticle的status
+   var status= req.query.status
+   var id= req.query.id
+    async function upDataNewArticleStatus(){
+        try{
+            let upDataStatus= await connect(`update newarticle  set  status = ${status}   where  id in (${id})`)
+           res.status(200).json({
+               code: 200,
+               message: '更新成功'
+           })
+        }catch(e){
+            res.status(500).json({
+                code: 202,
+                message: '更新失败'
+            })
+        }
+    }
+    upDataNewArticleStatus()
+})
 
+router.get('/getDataNewArticleStatusNo',(req,res)=>{ //获取没有选中的newArticle status ==0
+    let data={
+        sql: `SELECT * from newarticle  where status = 0  ORDER BY create_time desc`,
+        time: true
+    }
+    util.getData(data,req,res)
+})
 router.get('/index/page',(req,res)=> {
     const token= req.headers.authorization.split(' ').pop()
     // const id= jwt.verify(token,

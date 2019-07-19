@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "art-template": "^4.13.2",
     "cookie-session": "^1.3.3",
+    "express-art-template": "^1.0.1",
     "express-session": "^1.16.2",
     "jsonwebtoken": "^8.5.1"
   }

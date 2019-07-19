@@ -2,11 +2,15 @@ import { Message } from 'element-ui';
 import store from '../store/index'
 import {
     storeLoginInfo,
-    storeRoutes
+    storeRoutes,
+    handleNewArticle
 }from './mutationsType'
 
 import {
-    handleLogin
+    handleLogin,
+    getNewArticle,
+    upDataNewArticleStatus,
+    getDataNewArticleStatusNo
 } from '../require/index'
 import router from '../router';
 let timer= null
@@ -40,13 +44,16 @@ export default {
             Message({message: '账号未注册！',type: 'warning'})
         }     
     },
-    // asyStoreRoutes({state,commit},data){ //异步存储过滤下俩的路由
-    //     return new Promise((resolve,reject)=>{
-    //         commit(storeRoutes,data); //存储最新路由
-    //         resolve(data)
-    //     }).catch(error => {
-    //         reject(error);
-    //     });
-    // }
+    asyGetNewArticle({state,commit}){ //异步获取newArticle
+        return getNewArticle()
+    },
+    asyUpDataNewArticleStatus({commit,state},data){ //更新最新文章的status 不存入vuex
+        return upDataNewArticleStatus(data)
+    },
+    
+    asyGetDataNewArticleStatusNo({commit,state}){ //更新最新文章的status==0 不存入vuex
+        return getDataNewArticleStatusNo()
+    },
+    
  
 }

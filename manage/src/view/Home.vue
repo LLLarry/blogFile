@@ -3,7 +3,8 @@
         <Top />
         <Left />
         <main>
-            <Nal />
+            <Nal v-if="$route.path !== '/home/index'" />
+            <router-view />
          </main>
     </div>
 </template>
@@ -30,6 +31,7 @@ export default {
     bottom: 0;
     background-color:rgba(0,0,0,.1);
     z-index: 1;
+    overflow-y: auto;
 }
 </style>
 

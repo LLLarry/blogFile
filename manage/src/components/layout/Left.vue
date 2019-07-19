@@ -1,24 +1,24 @@
 <template>
     <div>
         <div class="leftCom" :style="{width: slideWidth+'px'}">
-             <div class="firstDiv" @click="handleSlide">
+             <router-link to="/" tag="div" class="firstDiv" @click="handleSlide">
                 <span class="iconSpan"><i class="el-icon-s-home"></i></span>
                 <span>首页 </span>
                 <span class="arrowRight" v-if="false">
                     <i class="el-icon-arrow-right"></i>
                 </span>
-            </div>
+            </router-link>
             <div class="firstDiv" @click="handleSlide(2)">
                 <span class="iconSpan"><i class="el-icon-s-custom"></i></span>
-                <span>图形统计 </span>
+                <span>管理首页 </span>
                 <span class="arrowRight">
                     <i class="el-icon-arrow-right"  :class="{'rotate_90' : show2}"></i>
                 </span>
             </div>
              <el-collapse-transition>
                 <div v-show="show2">
-                <div class="transition-box">图形统计1</div>
-                <div class="transition-box">图形统计2</div>
+                <router-link to="/home/manageIndex" tag="div" class="transition-box">更换图片</router-link>
+                <div class="transition-box">更换文本</div>
                 </div>
             </el-collapse-transition>
 

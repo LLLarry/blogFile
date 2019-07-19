@@ -7,7 +7,7 @@
           </span>
          <span class="spanP">
              <p class="top">欢迎</p>
-             <p class="userName">admin</p>
+             <p class="userName">{{userInfo.userName}}</p>
          </span>
          <el-dropdown  class="slideSpan" >
             <span class="el-dropdown-link">
@@ -28,7 +28,14 @@
 export default {
     data(){
         return {
-            show: false
+            show: false,
+            userInfo: {}
+        }
+    },
+    created(){
+        this.userInfo= {
+            userName: this.$store.state.userInfo.userName,
+            classify: this.$store.state.userInfo.classify
         }
     },
     methods: {

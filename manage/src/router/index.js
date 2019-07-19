@@ -19,15 +19,29 @@ Vue.use(Router)
        },
   ]
  })
-
 const powerRouter= [
-    { path: '/',redirect:'/home', name: 'index',component: () => import('@/view/Home') ,hidden:false, meta: {role: ['admin','editor']} },
+    { path: '/',redirect:'/home/index', name: 'index',component: () => import('@/view/Home') ,hidden:false, meta: {role: ['admin','editor']} },
     {
     path: '/home',
     name: 'Home',
     meta:  {role: ['admin']}, //这个是登录者是否可以访问的权限
-    component: () => import('@/view/Home')
+    component: () => import('@/view/Home'),
+      children: [
+        {  
+          path: '/home/index', //首页
+          name: 'Index',
+          meta:  {role: ['admin','editor']}, //这个是登录者是否可以访问的权限
+          component: () => import('@/view/ManageHome/ManageHome'),
+        },
+        {
+          path: '/home/manageIndex',
+          name: 'ManageIndex',
+          meta:  {role: ['admin']}, //这个是登录者是否可以访问的权限
+          component: () => import('@/view/ManageIndex/ManageIndex')
+        }       
+     ]
     },
+   
     {
     path: '/testa',
     name: 'TestA',
