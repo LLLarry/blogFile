@@ -38,6 +38,12 @@ const powerRouter= [
           name: 'ManageIndex',
           meta:  {role: ['admin']}, //这个是登录者是否可以访问的权限
           component: () => import('@/view/ManageIndex/ManageIndex')
+        },
+        {
+          path: '/home/manageIndexText',
+          name: 'ManageIndexText',
+          meta:  {role: ['admin']}, //这个是登录者是否可以访问的权限
+          component: () => import('@/view/ManageIndexText/ManageIndexText')
         }       
      ]
     },

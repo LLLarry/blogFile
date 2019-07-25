@@ -18,7 +18,7 @@
              <el-collapse-transition>
                 <div v-show="show2">
                 <router-link to="/home/manageIndex" tag="div" class="transition-box">更换图片</router-link>
-                <div class="transition-box">更换文本</div>
+                <router-link to="/home/manageIndexText" tag="div" class="transition-box">更换文本</router-link>
                 </div>
             </el-collapse-transition>
 
