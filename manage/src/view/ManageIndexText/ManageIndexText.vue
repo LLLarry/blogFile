@@ -10,7 +10,8 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      editor: null
+      editor: null,
+      mainHeight: 0,
     }
   },
   methods: {
@@ -24,6 +25,12 @@ export default {
      require('../../../static/utf8-php/lang/zh-cn/zh-cn.js')
      require('../../../static/utf8-php/ueditor.parse.min.js')
     this.editor = window.UE.getEditor('editor')
+    // 获取main的高度
+    const mainEle= document.querySelector('main').offsetHeight
+    const edui1_iframeholder= document.querySelector('#edui1_iframeholder')
+    this.mainHeight= mainEle
+    console.log(edui1_iframeholder)
+
   },
   destroyed () {
     this.editor.destroy()
@@ -33,7 +40,7 @@ export default {
 </script>
 
 <style scoped>
-
+  
 </style>
 
 
