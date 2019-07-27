@@ -34,7 +34,7 @@ function filterTime(date,type){  //时间过滤器
         return `${y}-${m}-${d}`
     }
     let h= dt.getHours() >=10? dt.getHours() : '0'+dt.getHours()
-    let mi= dt.getMonth() >= 10 ?  dt.getMonth() : '0'+  dt.getMonth()
+    let mi= dt.getMinutes() >= 10 ?  dt.getMinutes() : '0'+  dt.getMinutes()
     let s= dt.getSeconds() >= 10 ? dt.getSeconds() : '0'+ dt.getSeconds()
     return `${y}-${m}-${d} ${h}:${mi}:${s}`
 }

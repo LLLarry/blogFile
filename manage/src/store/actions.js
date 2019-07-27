@@ -10,7 +10,8 @@ import {
     handleLogin,
     getNewArticle,
     upDataNewArticleStatus,
-    getDataNewArticleStatusNo
+    getDataNewArticleStatusNo,
+    uploadArticle
 } from '../require/index'
 import router from '../router';
 let timer= null
@@ -54,6 +55,10 @@ export default {
     asyGetDataNewArticleStatusNo({commit,state}){ //更新最新文章的status==0 不存入vuex
         return getDataNewArticleStatusNo()
     },
+
+    asyUploadArticle({commit,state},data){ //上传文章
+        return uploadArticle(data)
+    }
     
  
 }

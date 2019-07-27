@@ -26,17 +26,22 @@ app.set('view engine', '.html')
 
 
 app.use(function(req,res,next){
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With","Content-Type,Access-Token");
-    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By",' 3.2.1');
-    res.header("Content-Type", "application/json;charset=utf-8");
+    // res.header("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Headers", "X-Requested-With","Content-Type,Access-Token");
+    // res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    // res.header("X-Powered-By",' 3.2.1');
+    // res.header("Content-Type", "application/json;charset=utf-8");
+    res.setHeader("Access-Control-Allow-Origin", "*");  
+    res.setHeader("Access-Control-Allow-Credentials", "true");  
+    res.setHeader("Access-Control-Allow-Methods", "*");  
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type,Access-Token");//这里“Access-Token”是我要传到后台的内容key  
+    res.setHeader("Access-Control-Expose-Headers", "*");  
     next()
 })
 
 app.use('/manage',router)//后台管理系统
 app.use('/',blogPage)  // blog页面路由
-// app.use('/ueditor',ueditorRouter)  // ueditor请求路由
+app.use('/ueditor',ueditorRouter)  // ueditor请求路由
 
   app.use("/ueditor/ue", ueditor(path.join(__dirname, 'public'), function (req, res, next) {
     //客户端上传文件设置
