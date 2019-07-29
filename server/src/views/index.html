@@ -251,7 +251,7 @@
         <% for(var i=0; i< newArticle.length; i++ ){ %>
         <li>
           <h3 class="blogtitle"><a href="/gongzuoriji/8.html" title="<%= newArticle[i].title %>" ><%= newArticle[i].title %></a></h3>          
-          <p class="blogtext"><%= newArticle[i].content.substring(0,80) %>... </p>
+          <p class="blogtext"><%- newArticle[i].content.substring(0,80) %>... </p>
           <p class="bloginfo"><i class="avatar"><img src="static/picture/avatar.jpg"></i><span>admin</span><span><%= newArticle[i].create_time %></span><span><%= newArticle[i].scan_time %>次</span></p>
           <a href="/gongzuoriji/8.html" title="<%= newArticle[i].title %>" class="viewmore">阅读更多</a> 
         </li>
