@@ -1,0 +1,227 @@
+<% for(var i=0; i< articleInfo.length; i++){ %>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title><%= articleInfo[i].title %>_个人博客</title>
+<meta name="keywords" content="支付,宝,被,国家,收编,结局,早已,注定,移动," />
+<meta name="description" content="移动支付作为中国的新五大发明之一，为人们的生活带来了极大的便利， 日常生活中，生活使用得最多的支付方式是微信支付和微信支付，微信依托腾讯QQ时代积累的大量人气而得以壮" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="static/css/base.css" rel="stylesheet">
+<link href="static/css/m.css" rel="stylesheet">
+</head>
+<body>
+<!--top begin-->
+<header id="header">
+  <div class="navbox">
+    <h2 id="mnavh"><span class="navicon"></span></h2>
+    <div class="logo"><a href="/">秀站个人博客</a></div>
+    <nav>
+      <ul id="starlist">
+        <li><a href="/">首页</a></li>
+        <li><a href="/gerenboke/" >个人博客</a></li>
+        <li><a href="/gongzuoriji/" >工作日记</a></li>
+        <li class="menu"><a href="/wangzhanmoban/" >网站模板</a>
+          <ul class="sub">
+            <li><a href="/bokemoban/">博客模板</a></li><li><a href="/wangzhanmoban/zhimengCMSmoban/">织梦CMS模板</a></li><li><a href="/wangzhanmoban/diguoCMSmoban/">帝国CMS模板</a></li>
+          </ul>
+          <span></span></li>
+        <li class="menu"><a href="/qianduanjishu/" >前端技术</a>
+          <ul class="sub">
+            <li><a href="/qianduanjishu/chengxurensheng/">程序人生</a></li><li><a href="/qianduanjishu/CSS3_HTML5/">CSS3|HTML5</a></li><li><a href="/qianduanjishu/SEOjiaocheng/">SEO教程</a></li><li><a href="/qianduanjishu/wangluoyingxiao/">网络营销</a></li>
+          </ul>
+          <span></span></li>
+        <li><a href="/youxiukuzhan/" >优秀酷站</a></li>
+        <li><a href="/about/" >关于我</a></li>
+      </ul>
+    </nav>
+    <div class="searchico"></div>
+  </div>
+</header>
+<div class="searchbox">
+  <div class="search">
+    <form action="/plus/search.php" method="post" name="searchform" id="searchform">
+      <input type="hidden" name="kwtype" value="0" />
+      <input name="q" type="text"  class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);" onFocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}" onBlur="if(value==''){this.style.color='#999';value='请输入关键字词'}">
+      <input name="Submit" class="input_submit" value="搜索" type="submit">
+    </form>
+  </div>
+  <div class="searchclose"></div>
+</div>
+<article> 
+  <!--lbox begin-->
+  <div class="lbox">
+    <div class="content_box whitebg">
+      <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href='http://localhost/'>主页</a> > <a href='/qianduanjishu/'>前端技术</a> > <a href='/qianduanjishu/CSS3_HTML5/'>CSS3|HTML5</a> > </span>CSS3|HTML5</h2>
+      <h1 class="con_tilte"><%= articleInfo[i].title %></h1>
+      <p class="bloginfo"><i class="avatar"><img src="static/picture/avatar.jpg"></i><span><%= articleInfo[i].author %></span><span><%= articleInfo[i].create_time %></span><span>【<a href="/gerenboke/" >个人博客</a>】</span><span>人已围观</span></p>
+      <p class="con_info"><b>简介</b><%= articleInfo[i].synopsis %></p>
+      <div class="con_text">
+        <p><%- articleInfo[i].content %></p>
+        <!-- <p class="share"><b>转载：</b>感谢您对叶青个人博客网站平台的认可，以及对我们原创作品以及文章的青睐，非常欢迎各位朋友分享到个人站长或者朋友圈，但转载请说明文章出处“来源叶青个人博客”。</p> -->
+        <p><span class="diggit">很赞哦！</span></p>
+        <div class="nextinfo">
+          <p>上一篇：<a href='/qianduanjishu/CSS3_HTML5/20.html'>刘强东VS马云，京东金条和支付宝借呗PK，哪个更</a> </p>
+          <p>下一篇：<a href='/qianduanjishu/CSS3_HTML5/28.html'>告别李国庆，19岁当当的思变与求变</a> </p>
+        </div>
+      </div>
+    </div>
+    <div class="whitebg">
+      <h2 class="htitle">相关文章</h2>
+      <ul class="otherlink">
+        <li><a href="/qianduanjishu/CSS3_HTML5/20.html" title="刘强东VS马云，京东金条和支付宝借呗PK，哪个更">刘强东VS马云，京东金条和支付宝借呗PK，哪个更</a></li>
+
+      </ul>
+    </div>
+    <div class="whitebg gbook">
+      <h2 class="htitle">文章评论</h2>
+      <!-- //主模板必须要引入/include/dedeajax2.js -->
+<a name='postform'></a>
+<div class="mt1">
+  <dl class="tbox">
+    <dd>
+      <div class="dede_comment_post">
+        <form action="#" method="post" name="feedback">
+          <input type="hidden" name="dopost" value="send" />
+          <input type="hidden" name="comtype" value="comments">
+          <input type="hidden" name="aid" value="21" />
+          <input type="hidden" name="fid" id='feedbackfid' value="0" />
+          <div class="clr"></div>
+          <div class="dcmp-content">
+            <textarea cols="60" name="msg" rows="5" class="ipt-txt"></textarea>
+          </div>
+          <!-- /dcmp-content -->
+          <div class="dcmp-post"><!--未登陆-->
+            <div class="dcmp-userinfo" id="_ajax_feedback">
+              <label class="yzm"/>验证码: </label>
+              <input type="text" name="validate" size="4" class="ipt-txt" style="text-transform:uppercase;"/>
+              <img id="vdimgck" align="absmiddle" onClick="this.src=this.src+'?'" style="cursor: pointer;" alt="看不清？点击更换" src="static/picture/vdimgck.php"/>
+              <input type="checkbox" name="notuser" id="dcmp-submit-guest" />
+              <label for="dcmp-submit-guest" />
+              匿名?
+              </label>
+            </div>
+            
+            <div class="dcmp-submit">
+              <button type="button" onClick='PostComment()' id="imageField">发表评论</button>
+              <p class="comment-sm">注：网友评论仅供其表达个人看法，并不代表本站立场。</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </dd>
+  </dl>
+</div>
+<!-- //评论表单区结束 --> 
+
+<!-- //评论内容区 --> 
+<a name='commettop'></a>
+<div class="mt1">
+  <dl class="tbox">
+    <!-- //这两个ID的区块必须存在，否则JS会出错 -->
+    <dd id='commetcontentNew'></dd>
+    <dd id='commetcontent'></dd>
+  </dl>
+</div>
+<!--
+//由于评论载入时使用异步传输，因此必须在最后一步加载（DIGG和评论框须放在评论内容前面）
+//如果一定需要提前的把myajax.SendGet改为myajax.SendGet2，但可能会引起页面阻滞
+--> 
+    </div>
+  </div>
+  <!--lbox end-->
+  <div class="rbox">
+    <div class="whitebg paihang">
+      <h2 class="htitle">点击排行</h2>
+      <section class="topnews imgscale"><a href="/qianduanjishu/CSS3_HTML5/30.html" title="移动时代，如何科学的运用品牌？" ><img src="static/picture/2.jpg" alt="移动时代，如何科学的运用品牌？"><span>移动时代，如何科学的运用品牌？</span></a></section>
+
+      <ul>
+        <li><i></i><a href="/qianduanjishu/CSS3_HTML5/32.html" title="QQ的第20年：瘦身、臃肿和微信冲击" >QQ的第20年：瘦身、臃肿和微信冲击"</a></li>
+<li><i></i><a href="/qianduanjishu/CSS3_HTML5/28.html" title="告别李国庆，19岁当当的思变与求变" >告别李国庆，19岁当当的思变与求变"</a></li>
+<li><i></i><a href="/qianduanjishu/CSS3_HTML5/29.html" title="斗鱼赴美胜算几何？老的对手，新的" >斗鱼赴美胜算几何？老的对手，新的"</a></li>
+<li><i></i><a href="/qianduanjishu/CSS3_HTML5/20.html" title="刘强东VS马云，京东金条和支付宝借呗" >刘强东VS马云，京东金条和支付宝借呗"</a></li>
+<li><i></i><a href="/qianduanjishu/CSS3_HTML5/30.html" title="移动时代，如何科学的运用品牌？" >移动时代，如何科学的运用品牌？"</a></li>
+<li><i></i><a href="/qianduanjishu/CSS3_HTML5/31.html" title="乐视余波尚在，孙宏斌一场豪赌该是" >乐视余波尚在，孙宏斌一场豪赌该是"</a></li>
+<li><i></i><a href="/qianduanjishu/CSS3_HTML5/21.html" title="支付宝被国家收编，结局早已注定" >支付宝被国家收编，结局早已注定"</a></li>
+
+      </ul>
+    </div>
+    <div class="whitebg tuijian">
+      <h2 class="htitle">本栏推荐</h2>
+      <section class="topnews imgscale"><a href="/qianduanjishu/CSS3_HTML5/30.html" title="移动时代，如何科学的运用品牌？" ><img src="static/picture/2.jpg" alt="移动时代，如何科学的运用品牌？"><span>移动时代，如何科学的运用品牌？</span></a></section>
+
+      <ul>
+        <li><a href="/"><i><img src="static/picture/1.jpg" alt="支付宝被国家收编，结局早已注定"></i>
+          <p>支付宝被国家收编，结局早已注定</p>
+          </a></li>
+<li><a href="/"><i><img src="static/picture/2.jpg" alt="移动时代，如何科学的运用品牌？"></i>
+          <p>移动时代，如何科学的运用品牌？</p>
+          </a></li>
+
+      </ul>
+    </div>
+    <div class="ad whitebg imgscale">
+      <ul>
+        <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=3g0dcr18" target="_blank"><img src="static/picture/ad.jpg"></a>
+      </ul>
+    </div>
+    <div class="whitebg cloud">
+      <h2 class="htitle">标签云</h2>
+      <ul>
+        <a href='/tags.php?/%E4%BD%99%E9%A2%9D%E5%AE%9D/'>余额宝</a><a href='/tags.php?/%E7%BD%91%E8%B4%B7/'>网贷</a><a href='/tags.php?/%E7%94%B0%E5%AE%81/'>田宁</a><a href='/tags.php?/%E5%BC%80%E4%B8%9A%E5%85%B8%E7%A4%BC/'>开业典礼</a><a href='/tags.php?/%E6%8A%96%E9%9F%B3%E8%93%9DV/'>抖音蓝V</a><a href='/tags.php?/%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86/'>仓库管理</a>
+      </ul>
+    </div>
+    <div class="whitebg wenzi">
+      <h2 class="htitle">猜你喜欢</h2>
+      <ul>
+        <li><a href="/qianduanjishu/CSS3_HTML5/21.html" title="支付宝被国家收编，结局早已注定" >支付宝被国家收编，结局早已注定"</a></li>
+<li><a href="/qianduanjishu/CSS3_HTML5/32.html" title="QQ的第20年：瘦身、臃肿和微信冲击" >QQ的第20年：瘦身、臃肿和微信冲击"</a></li>
+<li><a href="/qianduanjishu/CSS3_HTML5/29.html" title="斗鱼赴美胜算几何？老的对手，新的" >斗鱼赴美胜算几何？老的对手，新的"</a></li>
+<li><a href="/qianduanjishu/CSS3_HTML5/30.html" title="移动时代，如何科学的运用品牌？" >移动时代，如何科学的运用品牌？"</a></li>
+<li><a href="/qianduanjishu/CSS3_HTML5/31.html" title="乐视余波尚在，孙宏斌一场豪赌该是" >乐视余波尚在，孙宏斌一场豪赌该是"</a></li>
+<li><a href="/qianduanjishu/CSS3_HTML5/20.html" title="刘强东VS马云，京东金条和支付宝借呗" >刘强东VS马云，京东金条和支付宝借呗"</a></li>
+<li><a href="/qianduanjishu/CSS3_HTML5/28.html" title="告别李国庆，19岁当当的思变与求变" >告别李国庆，19岁当当的思变与求变"</a></li>
+
+      </ul>
+    </div>
+    <div class="ad whitebg imgscale">
+      <ul>
+        <a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=3g0dcr18" target="_blank"><img src="static/picture/ad02.jpg"></a>
+      </ul>
+    </div>
+    <div class="whitebg tongji">
+      <h2 class="htitle">站点信息</h2>
+      <ul>
+        <li><b>建站时间</b>：2019-02-24</li>
+        <li><b>网站程序</b>：织梦CMS7.5</li>
+        <li><b>主题模板</b>：《今夕何夕》</li>
+        <li><b>文章统计</b>：38 篇 </li>
+        <li><b>源码统计</b>：6 篇 </li>
+        <li><b>微信公众号</b>：扫描二维码，关注我们</li>
+        <img src="static/picture/wxgzh.jpg" class="tongji_gzh">
+      </ul>
+    </div>
+  </div>
+</article>
+<footer>
+  <div class="box">
+    <div class="wxbox">
+      <ul>
+        <li><img src="static/picture/wxgzh.jpg"><span>微信公众号</span></li>
+        <li><img src="static/picture/wx.png"><span>我的微信</span></li>
+      </ul>
+    </div>
+    <div class="endnav">
+      <p><b>站点声明：</b></p>
+      <p>1、本站个人博客模板，均为叶清本人设计，个人可以使用，但是未经许可不得用于任何商业目的。</p>
+      <p>2、所有文章未经授权禁止转载、摘编、复制或建立镜像，如有违反，追究法律责任。举报邮箱：<a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=2361928288@qq.com" target="_blank">2361928288@qq.com</a></p>
+      <p>Copyright © 个人博客网站模板 All Rights Reserved. 备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">皖ICP09090899号</a></p>
+    </div>
+  </div>
+  <a href="#">
+  <div class="top"></div>
+  </a>
+</footer>
+</body>
+</html>
+<% } %>

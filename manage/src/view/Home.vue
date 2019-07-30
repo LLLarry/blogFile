@@ -2,9 +2,9 @@
     <div class="homeDiv">
         <Top />
         <Left />
-        <main>
+        <main ref="main">
             <Nal v-if="$route.path !== '/home/index'" />
-            <router-view />
+            <router-view :mainHeight="mainHeight" />
          </main>
     </div>
 </template>
@@ -14,10 +14,19 @@ import Left from '../components/layout/Left'
 import Top from '../components/layout/Top'
 import Nal from '../components/Nav/Nav'
 export default {
+    data(){
+        return {
+            mainHeight: 0, //main的高度的0.55倍
+        }
+    },
     components: {
         Left,
         Top,
         Nal
+    },
+    mounted(){
+         const mainEle= this.$refs.main.offsetHeight * 0.55
+         this.mainHeight= mainEle
     }
 }
 </script>

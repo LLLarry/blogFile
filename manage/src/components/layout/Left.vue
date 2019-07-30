@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="leftCom" :style="{width: slideWidth+'px'}">
-             <router-link to="/" tag="div" class="firstDiv" @click="handleSlide">
+             <router-link to="/" tag="div" class="firstDiv" @click="handleSlide" :class="{active: $route.path == '/home/index'}">
                 <span class="iconSpan"><i class="el-icon-s-home"></i></span>
                 <span>首页 </span>
                 <span class="arrowRight" v-if="false">
@@ -17,8 +17,8 @@
             </div>
              <el-collapse-transition>
                 <div v-show="show2">
-                <router-link to="/home/manageIndex" tag="div" class="transition-box">更换图片</router-link>
-                <router-link to="/home/manageIndexText" tag="div" class="transition-box">更换文本</router-link>
+                <router-link to="/home/manageIndex" tag="div" class="transition-box" :class="{active: $route.path == '/home/manageIndex'}">管理首页</router-link>
+                <router-link to="/home/manageIndexText" tag="div" class="transition-box" :class="{active: $route.path == '/home/manageIndexText'}">博文增改</router-link>
                 </div>
             </el-collapse-transition>
 
@@ -64,6 +64,12 @@ export default {
       isSlideMin: false, //是否滑到最小
       isMoving:  false //是否正在滑到
     }),
+    created(){
+        switch(this.$route.path){
+            case '/home/manageIndex' : this.show2= true ;break ;
+            case '/home/manageIndexText' : this.show2= true ;break ;
+        }
+    },
     methods: {
         handleSlide(num){
             if(this['show'+num]){
@@ -103,6 +109,9 @@ export default {
 </script>
 
 <style scoped>
+.active {
+    color: #00fff5;
+}
 .leftCom {
     font-size: 12px;
     width: 200px;

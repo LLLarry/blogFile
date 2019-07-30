@@ -36,7 +36,7 @@ export default {
                     clearInterval(timer)
                 }
             },1000)
-            router.push({path: '/home'})
+            router.push({path: '/home/index'})
         }else if(userInfo.data.code === 201){
             // 密码错误
             Message({message: '密码错误！',type: 'error'})

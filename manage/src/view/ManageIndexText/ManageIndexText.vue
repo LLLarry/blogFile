@@ -19,6 +19,12 @@
         clearable>
       </el-input>
      </div>
+     <div class="articleTop">
+        <span>请输入文章简介</span>
+       <!-- <el-form-item label="活动形式" prop="desc"> -->
+        <el-input type="textarea" v-model="synopsis" placeholder="请输入文章简介"></el-input>
+      <!-- </el-form-item> -->
+     </div>
     </div>
     <script id="editor" type="text/plain" :style="{ height: mainHeight + 'px' }"></script>
     <el-button type="primary" @click="show">上传文章</el-button>
@@ -32,16 +38,18 @@ export default {
   data () {
     return {
       editor: null,
-      mainHeight: 0,// main元素的高度
       articleTitle: '', //文章标题
       articleAuthor: '', //文章作者
+      synopsis: '', //文章简介
     }
   },
+  props:['mainHeight'],
   methods: {
     show () {
       console.log(this.editor.getContent())
       let content= this.editor.getContent()
       let title= this.articleTitle
+      let synopsis= this.synopsis
       let author= this.articleAuthor
       if(title == '' || title == null){
         Message({message: '请输入文章标题',type: 'warning',duration: 2000})
@@ -49,6 +57,10 @@ export default {
       }
       if(author == '' || author == null){
         Message({message: '请输入文章作者',type: 'warning',duration: 2000})
+        return
+      }
+      if(synopsis == '' || synopsis == null){
+        Message({message: '请输入文章简介',type: 'warning',duration: 2000})
         return
       }
       if(content == '' || content == null){
@@ -59,6 +71,7 @@ export default {
       let articleData= {
         title: title,
         author: author,
+        synopsis: synopsis,
         content: content
       }
       const result= this.$store.dispatch('asyUploadArticle',articleData)
@@ -81,9 +94,6 @@ export default {
      require('../../../static/utf8-php/lang/zh-cn/zh-cn.js')
      require('../../../static/utf8-php/ueditor.parse.min.js')
     this.editor = window.UE.getEditor('editor')
-    // 获取main的高度
-    const mainEle= document.querySelector('main').offsetHeight * 0.6
-    this.mainHeight= mainEle
   },
   destroyed () {
     this.editor.destroy()
