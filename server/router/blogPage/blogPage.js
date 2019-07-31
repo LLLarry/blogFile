@@ -9,6 +9,10 @@ router.get('/',function(req,res){
     // 获取前十条最新博文
     console.log(req.headers["user-agent"].toLowerCase())
     async function getNewArticle(){
+        console.log(req.headers['x-forwarded-for'] ||
+        req.connection.remoteAddress ||
+        req.socket.remoteAddress ||
+        req.connection.socket.remoteAddress)
         try {
             let newArticle= await connect('SELECT * from newarticle  where status = 1  ORDER BY create_time desc LIMIT 10')
             newArticle.forEach((item,i)=>{

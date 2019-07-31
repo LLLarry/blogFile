@@ -2,9 +2,11 @@ const express = require('express');
 const path= require('path')
 const router= require('./router.js')
 const blogPage= require('./router/blogPage/blogPage.js')
+const managePage= require('./router/managePage/managePage.js')
 const ueditorRouter= require('./router/ueditor/ueditor.js')
 const app = express();
 const mysql= require('./mysql.js')
+const log4js = require('log4js'); /** nodeJs log4js工作日志*/
 
 var bodyParser = require('body-parser')
 var ueditor = require("ueditor")
@@ -41,8 +43,8 @@ app.use(function(req,res,next){
 
 app.use('/manage',router)//后台管理系统
 app.use('/',blogPage)  // blog页面路由
+app.use('/manage',managePage)
 app.use('/ueditor',ueditorRouter)  // ueditor请求路由
-
   app.use("/ueditor/ue", ueditor(path.join(__dirname, 'public'), function (req, res, next) {
     //客户端上传文件设置
     var imgDir = '/img/ueditor/'
@@ -74,6 +76,40 @@ app.use('/ueditor',ueditorRouter)  // ueditor请求路由
     }
 
 }))
+
+/**log4js配置 */
+
+log4js.configure(
+          {
+            appenders: {
+              file: {
+                  type : 'file',
+                filename: __dirname + '/logs/test.log',//文件目录，当目录文件或文件夹不存在时，会自动创建
+                maxLogSize : 10,//文件最大存储空间，当文件内容超过文件存储空间会自动生成一个文件test.log.1的序列自增长的文件
+                backups : 3,//当文件内容超过文件存储空间时，备份文件的数量
+                //compress : true,//是否以压缩的形式保存新文件,默认false。如果true，则新增的日志文件会保存在gz的压缩文件内，并且生成后将不被替换，false会被替换掉
+                encoding : 'utf-8',//default "utf-8"，文件的编码
+                category : 'log_file',
+                numBackups: 5, // keep five backup files
+                compress: true, // compress the backups
+                encoding: 'utf-8',
+              },
+              dateFile: {
+                type: 'dateFile',
+                filename: __dirname +'/logs/more-important-things.log',
+                pattern: 'yyyy-MM-dd-hh',
+                compress: true
+              },
+              out: {
+                type: 'stdout'
+              }
+            },
+            categories: {
+              default: { appenders: ['file', 'dateFile', 'out'], level: 'trace' }
+            }
+          }
+        );
+
 
 app.listen("8888",'localhost',function(err){if(err){
     console.log(err);return;
