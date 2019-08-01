@@ -59,6 +59,7 @@ export default {
     asyUploadArticle({commit,state},data){ //上传文章
         return uploadArticle(data)
     }
+
     
  
 }

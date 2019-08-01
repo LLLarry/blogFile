@@ -4,11 +4,11 @@
             <ul class="nav clearfix">
                 <li>
                     <p>总访问量</p>
-                    <p>1523次</p>
+                    <p>{{dataCensus.scan_time}}次</p>
                 </li>
                 <li>
                     <p>今日访问数量</p>
-                    <p>56次</p>
+                    <p>{{dataCensus.day_scan_time}}次</p> 
                 </li>
                 <li>
                     <p>文章总数</p>
@@ -28,8 +28,52 @@
 </template>
 
 <script>
+    import { Notification } from 'element-ui';
     var echarts = require('echarts');
+    import {getDataCensus,isCheckDayScanHistory} from '../../require/index'
     export default {
+        data(){
+            return {
+                dataCensus: {} //数据统计
+            }
+        },
+        created(){
+            asyIsCheckDayScanHistory()
+            asyGetDataCensus()
+            let _this= this
+            async function asyIsCheckDayScanHistory(){
+            try{
+                await isCheckDayScanHistory()
+            }catch(e){
+
+            }
+            }
+           async function asyGetDataCensus(){
+               
+               try{
+                    let dataCensus=  await getDataCensus()
+                    if(dataCensus.data.code === 200){
+                        _this.dataCensus= dataCensus.data.censusData[0]
+                    }else {
+                        Notification({
+                            title: '提示',
+                            message: '获取统计失败，请稍后重试！',
+                            type: "warning",
+                            duration: 2000
+                        })
+                    }
+                    
+               }catch(e){
+                   console.log(e)
+                   Notification({
+                            title: '提示',
+                            message: '获取统计失败，请稍后重试！',
+                            type: "warning",
+                            duration: 2000
+                        })
+               }
+           }
+        },
         mounted(){
              /*ECharts图表*/
         var myChart = echarts.init(document.getElementById('ct1'));

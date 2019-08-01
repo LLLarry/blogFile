@@ -38,3 +38,18 @@ export const uploadArticle= function(data){ //上传文章
         data: data
     })
 }
+
+export const getDataCensus= function(){ //获取数据统计
+    return ajax({
+        url: base_url+'/getDataCensus',
+        method: 'post'
+    })
+}
+
+export const isCheckDayScanHistory= function(){ //当登录访问后台首页的时候，访问当天浏览次数的时间，和现在时间相比（2019-08-01）如果小于24小时候则不操作，大于24小时，将今日
+    // 访问量置为0，时间设置为今天时间
+    return ajax({
+        url: base_url+'/isCheckDayScanHistory',
+        method: 'post'
+    })
+}
