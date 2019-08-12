@@ -2,6 +2,7 @@ const express = require('express');
 const path= require('path')
 const router= require('./router.js')
 const blogPage= require('./router/blogPage/blogPage.js')
+const webTechnology= require('./router/webTechnology/webTechnology.js')
 const managePage= require('./router/managePage/managePage.js')
 const ueditorRouter= require('./router/ueditor/ueditor.js')
 const app = express();
@@ -43,6 +44,7 @@ app.use(function(req,res,next){
 
 app.use('/manage',router)//后台管理系统
 app.use('/',blogPage)  // blog页面路由
+app.use('/technology',webTechnology)//前端技术路由
 app.use('/manage',managePage)
 app.use('/ueditor',ueditorRouter)  // ueditor请求路由
   app.use("/ueditor/ue", ueditor(path.join(__dirname, 'public'), function (req, res, next) {
