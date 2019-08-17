@@ -5,6 +5,8 @@ const blogPage= require('./router/blogPage/blogPage.js')
 const webTechnology= require('./router/webTechnology/webTechnology.js')
 const managePage= require('./router/managePage/managePage.js')
 const ueditorRouter= require('./router/ueditor/ueditor.js')
+const upLoadImageRouter= require('./router/upLoadImage/upLoadImage.js')
+
 const app = express();
 const mysql= require('./mysql.js')
 const log4js = require('log4js'); /** nodeJs log4js工作日志*/
@@ -47,6 +49,7 @@ app.use('/',blogPage)  // blog页面路由
 app.use('/technology',webTechnology)//前端技术路由
 app.use('/manage',managePage)
 app.use('/ueditor',ueditorRouter)  // ueditor请求路由
+app.use('/upload',upLoadImageRouter)//上传图片路由
   app.use("/ueditor/ue", ueditor(path.join(__dirname, 'public'), function (req, res, next) {
     //客户端上传文件设置
     var imgDir = '/img/ueditor/'

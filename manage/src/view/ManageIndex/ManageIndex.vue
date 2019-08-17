@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="secondBottom"> 
                                     <el-button type="primary" plain @click="exitUpdateImp(1)">取消</el-button>
-                                    <el-button type="primary" plain>上传</el-button>
+                                    <el-button type="primary" plain @click="updateImp(1)">上传</el-button>
                                   </div>
                            </div>
                         </div>
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="secondBottom"> 
                                     <el-button type="primary" plain @click="exitUpdateImp(2)">取消</el-button>
-                                    <el-button type="primary" plain>上传</el-button>
+                                    <el-button type="primary" plain  @click="updateImp(2)">上传</el-button>
                                   </div>
                            </div>
                         </div>
@@ -122,7 +122,7 @@
                                 </div>
                                 <div class="secondBottom"> 
                                     <el-button type="primary" plain @click="exitUpdateImp(3)">取消</el-button>
-                                    <el-button type="primary" plain>上传</el-button>
+                                    <el-button type="primary" plain @click="updateImp(3)">上传</el-button>
                                   </div>
                            </div>
                         </div>
@@ -164,7 +164,7 @@
                                 </div>
                                 <div class="secondBottom"> 
                                     <el-button type="primary" plain @click="exitUpdateImp(4)">取消</el-button>
-                                    <el-button type="primary" plain>上传</el-button>
+                                    <el-button type="primary" plain @click="updateImp(4)">上传</el-button>
                                   </div>
                            </div>
                         </div>
@@ -208,7 +208,7 @@
                                 </div>
                                 <div class="secondBottom"> 
                                     <el-button type="primary" plain @click="exitUpdateImpNav(1)">取消</el-button>
-                                    <el-button type="primary" plain>上传</el-button>
+                                    <el-button type="primary" plain @click="updateImpNav(1)">上传</el-button>
                                   </div>
                            </div>
                         </div>
@@ -250,7 +250,7 @@
                                 </div>
                                 <div class="secondBottom"> 
                                     <el-button type="primary" plain @click="exitUpdateImpNav(2)">取消</el-button>
-                                    <el-button type="primary" plain>上传</el-button>
+                                    <el-button type="primary" plain  @click="updateImpNav(1)">上传</el-button>
                                   </div>
                            </div>
                         </div>

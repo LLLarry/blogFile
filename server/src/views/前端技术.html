@@ -56,18 +56,22 @@
   <!--lbox begin-->
   <div class="lbox">
     <div class="whitebg lanmu">
-      <h1>前端技术</h1>
+      <h1><%= obj.from=='/'? '前端技术' : obj.from =='javascript' ? 'Javascript' : obj.from =='CSS3_HTML5' ? 'CSS3|HTML5' : obj.from =='CSS3_HTML5' ? 'CSS3|HTML5' : obj.from  %></h1>
       <p>&nbsp;大前端是一个关注前端开发、用户体验设计、HTML5、CSS3、Javascript的前端开发独立博客。</p>
     </div>
     <div class="whitebg bloglist">
-      <h2 class="htitle"><span class="hnav"><a href="/qianduanjishu/chengxurensheng/">程序人生</a><a href="/qianduanjishu/CSS3_HTML5/">CSS3|HTML5</a><a href="/qianduanjishu/SEOjiaocheng/">SEO教程</a><a href="/qianduanjishu/wangluoyingxiao/">网络营销</a></span>前端技术</h2>
+      <h2 class="htitle"><span class="hnav"><a href="/technology/javascript/">Javascript</a><a href="/technology/CSS3_HTML5/">CSS3|HTML5</a><a href="/technology/frame/">框架</a><a href="/technology/procedures/">小程序</a></span>
+        <%= obj.from=='/'? '前端技术' : obj.from =='javascript' ? 'Javascript' : obj.from =='CSS3_HTML5' ? 'CSS3|HTML5' : obj.from =='CSS3_HTML5' ? 'CSS3|HTML5' : obj.from  %></h2>
       <ul>
+        <% for(var i=0; i<articleInfo.length;i++){ %>
         <li>
-          <h3 class="blogtitle"><a href="/qianduanjishu/wangluoyingxiao/36.html" title="开业典礼策划时要注意哪些事项？" >开业典礼策划时要注意哪些事项？</a></h3>
+          <h3 class="blogtitle"><a href="/blogPage?id=<%=articleInfo[i].id %>" title="<%=articleInfo[i].title %>" ><%=articleInfo[i].title %></a></h3>
           
-          <p class="blogtext">要知道开业庆典以及开业宣传决定着店面在当地是否能够一炮而响，所以需要创业者在开业庆典上多花一些心思。开业典礼策划时要注意哪些事项？ 1、要做好来宾约请工作 开业仪式影... </p>
-          <p class="bloginfo"><i class="avatar"><img src="static/picture/avatar.jpg"></i><span>可乐</span><span>2019-02-21</span><span>111次</span></p>
-          <a href="/qianduanjishu/wangluoyingxiao/36.html" title="开业典礼策划时要注意哪些事项？" class="viewmore">阅读更多</a> </li><li>
+          <p class="blogtext"><%=articleInfo[i].synopsis %></p>
+          <p class="bloginfo"><i class="avatar"><img src="static/picture/avatar.jpg"></i><span><%=articleInfo[i].author %></span><span><%=articleInfo[i].create_time %></span><span><%=articleInfo[i].scan_time %>次</span></p>
+          <a href="/blogPage?id=<%=articleInfo[i].id %>" title="<%=articleInfo[i].title %>" class="viewmore">阅读更多</a> </li>
+         <% } %>
+         <!-- <li>
           <h3 class="blogtitle"><a href="/qianduanjishu/wangluoyingxiao/37.html" title="企业怎么认证抖音蓝V？审核不通过怎么办？" >企业怎么认证抖音蓝V？审核不通过怎么办？</a></h3>
           
           <p class="blogtext">不管你玩不玩抖音，一定已经发现了它的火爆，从景点随处可见的拍摄人群，到人群中外放看抖音的音乐，可以说抖音已经迅速崛起为一种新的生活方式，并且除了年轻人，也不乏各年... </p>
@@ -137,7 +141,7 @@
           
           <p class="blogtext">2017年，是直播行业最火的一年，也是直播平台最乱的一年。当绝地求生取代英雄联盟成为各区主播新的饭碗，没有人意识到，这款爆红的大逃杀游戏将一改历史，颠覆整个直播圈。 斗... </p>
           <p class="bloginfo"><i class="avatar"><img src="static/picture/avatar.jpg"></i><span>admin</span><span>2019-02-21</span><span>170次</span></p>
-          <a href="/qianduanjishu/CSS3_HTML5/29.html" title="斗鱼赴美胜算几何？老的对手，新的起点" class="viewmore">阅读更多</a> </li>
+          <a href="/qianduanjishu/CSS3_HTML5/29.html" title="斗鱼赴美胜算几何？老的对手，新的起点" class="viewmore">阅读更多</a> </li> -->
       </ul>
     </div>
    <!--pagelist-->

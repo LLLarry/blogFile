@@ -1,6 +1,15 @@
 <template>
    <div class="hello">
-     <div class="clearfix">  
+
+      <div class="toggle clearfix">
+        <div class="toggleDiv" @click="model= model == 1 ? 2 : 1 ">
+            <span ref="toggleSpan2">添加模式</span>
+            <span class="el-icon-sort" ref="toggleSpan"></span>
+        </div>
+      </div>
+            
+   
+     <div class="clearfix"> 
      <div class="articleTop first">
         <span>请输入文章标题</span>
         <el-input
@@ -19,13 +28,27 @@
         clearable>
       </el-input>
      </div>
-     <div class="articleTop">
+
+     <div class="articleTop first" >
         <span>请输入文章简介</span>
        <!-- <el-form-item label="活动形式" prop="desc"> -->
         <el-input type="textarea" v-model="synopsis" placeholder="请输入文章简介"></el-input>
       <!-- </el-form-item> -->
      </div>
+    <div class="articleTop">
+      <span>请选择文章类型</span>
+      <el-select v-model="categray" placeholder="请选择">
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-select>
     </div>
+
+    </div>
+   
     <script id="editor" type="text/plain" :style="{ height: mainHeight + 'px' }"></script>
     <el-button type="primary" @click="show">上传文章</el-button>
   </div>
@@ -41,6 +64,21 @@ export default {
       articleTitle: '', //文章标题
       articleAuthor: '', //文章作者
       synopsis: '', //文章简介
+      model: 1,  // 1是添加模式， 2是编辑模式
+      categray: 1,
+       options: [{
+          value: 1,
+          label: 'Javascript'
+        }, {
+          value: 2,
+          label: 'Css|Html'
+        }, {
+          value: 3,
+          label: '框架'
+        }, {
+          value: 4,
+          label: '小程序'
+        }],
     }
   },
   props:['mainHeight'],
@@ -72,7 +110,8 @@ export default {
         title: title,
         author: author,
         synopsis: synopsis,
-        content: content
+        content: content,
+        categray: this.categray
       }
       const result= this.$store.dispatch('asyUploadArticle',articleData)
       try{
@@ -94,6 +133,17 @@ export default {
      require('../../../static/utf8-php/lang/zh-cn/zh-cn.js')
      require('../../../static/utf8-php/ueditor.parse.min.js')
     this.editor = window.UE.getEditor('editor')
+  },
+  watch: {
+    model(newVal,oldVal){
+      if(newVal == 1){ 
+        this.$refs.toggleSpan.style.transform="rotate(90deg)"
+        this.$refs.toggleSpan2.innerText= '添加模式'
+      }else {
+        this.$refs.toggleSpan.style.transform="rotate(0deg)"
+        this.$refs.toggleSpan2.innerText= '编辑模式'
+      }
+    }
   },
   destroyed () {
     this.editor.destroy()
@@ -121,6 +171,28 @@ export default {
     margin-bottom: 10px;
     color: #666;
   }
+  .toggle .toggleDiv {
+    float: right;
+    color: #666;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    font-size: 12px;
+    padding: 0 8px;
+    cursor: pointer;
+    -webkit-user-select:none;
+     -moz-user-select:none;
+     -ms-user-select:none;
+     user-select:none;
+  }
+  .toggle .el-icon-sort {
+    font-size: 16px;
+     transform: rotate(90deg);
+     transition: all .5s;
+  }
+ 
 </style>
 
 

@@ -52,7 +52,7 @@
   <!--lbox begin-->
   <div class="lbox">
     <div class="content_box whitebg">
-      <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href='http://localhost/'>主页</a> > <a href='/qianduanjishu/'>前端技术</a> > <a href='/qianduanjishu/CSS3_HTML5/'>CSS3|HTML5</a> > </span>CSS3|HTML5</h2>
+      <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href='/'>主页</a>  <a href="/technology/">前端技术</a> > <a href="<%= articleInfo[i].categary==1 ? '/technology/javascript/' : articleInfo[i].categary==2 ? '/technology/CSS3_HTML5/': articleInfo[i].categary==3? '/technology/frame/' : '/technology/procedures/'  %>"><%= articleInfo[i].categary==1 ? 'Javascript' : articleInfo[i].categary==2 ? 'CSS3|HTML5': articleInfo[i].categary==3? '框架' : '小程序'  %></a> > </span><%= articleInfo[i].categary==1 ? 'Javascript' : articleInfo[i].categary==2 ? 'CSS3|HTML5': articleInfo[i].categary==3? '框架' : '小程序'  %></h2>
       <h1 class="con_tilte"><%= articleInfo[i].title %></h1>
       <p class="bloginfo"><i class="avatar"><img src="static/picture/avatar.jpg"></i><span><%= articleInfo[i].author %></span><span><%= articleInfo[i].create_time %></span><span>【<a href="/gerenboke/" >个人博客</a>】</span><span>人已围观</span></p>
       <p class="con_info"><b>简介</b><%= articleInfo[i].synopsis %></p>
